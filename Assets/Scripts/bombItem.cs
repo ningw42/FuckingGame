@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class bomb : MonoBehaviour {
+public class bombItem : MonoBehaviour {
 
     //protected AudioSource m_audio;
 
@@ -9,7 +9,6 @@ public class bomb : MonoBehaviour {
     public Transform m_explosionFX;
 
     //live time
-    public float m_livetime = 3;
     public Transform m_destroy;
     protected Transform m_transform;
 	// Use this for initialization
@@ -19,9 +18,6 @@ public class bomb : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        m_livetime -= Time.deltaTime;
-        if (m_livetime <= 0)
-            Destroy(this.gameObject);
 	}
 
     void OnTriggerEnter(Collider other)
