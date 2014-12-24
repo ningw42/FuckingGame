@@ -21,7 +21,6 @@ public class RedDot2 : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         GameObject enteredObject = other.gameObject;
-        Debug.Log(enteredObject.GetType());
         if (enteredObject.tag.Equals("Player"))
         {
             //((Player)enteredObject).m_life--;

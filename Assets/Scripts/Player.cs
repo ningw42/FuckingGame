@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
     public int m_life;
     Vector3 direction;
     Vector3 axis;
-    Vector3 acceleration;
+    public Vector3 acceleration;
     Transform m_transform;
 
 	// Use this for initialization

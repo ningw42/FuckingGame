@@ -30,7 +30,7 @@ public class Gravity : MonoBehaviour {
         }
         gravity = transform.position - inrangeObject.transform.position;
         gravity = gravity.normalized * 100 / (gravity.magnitude < 5 ? 5 : gravity.magnitude);
-        inrangeObject.transform.Translate(gravity);
+        inrangeObject.transform.Translate(gravity, Space.World);
 	}
 
 	void OnTriggerExit( Collider other )
