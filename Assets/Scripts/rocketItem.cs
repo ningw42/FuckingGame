@@ -9,6 +9,7 @@ public class rocketItem : MonoBehaviour {
 	void Start () {
 
         m_transform = this.transform;
+
 	}
 	
 	// Update is called once per frame

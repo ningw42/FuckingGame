@@ -5,9 +5,11 @@ public class RedDot2 : MonoBehaviour {
     Vector3 direction;
     Transform m_transform;
     public int m_speed;
+    public bool isFrozen;
 
 	// Use this for initialization
 	void Start () {
+        isFrozen = false;
         m_speed = 5;
         m_transform = this.transform;
         direction = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
@@ -15,7 +17,11 @@ public class RedDot2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        m_transform.Translate(direction * m_speed);
+        if(!isFrozen)
+        {
+            m_transform.Translate(direction * m_speed);
+        }
+        
 	}
 
     void OnTriggerEnter(Collider other)
