@@ -9,9 +9,11 @@ public class RedDot1 : MonoBehaviour {
 	GameObject master;
     Transform master_transform;
     Transform m_transform;
+    public bool isFrozen;
 
 	// Use this for initialization
 	void Start () {
+        isFrozen = false;
 		master = GameObject.FindGameObjectWithTag("Player");
         master_transform = master.transform;
         m_transform = this.transform;
@@ -20,10 +22,14 @@ public class RedDot1 : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-        direction = (master_transform.position - m_transform.position).normalized;
-		x = speed * direction.x;
-		y = speed * direction.y;
-        m_transform.Translate(x, y, 0);
+        if(!isFrozen)
+        {
+            direction = (master_transform.position - m_transform.position).normalized;
+            x = speed * direction.x;
+            y = speed * direction.y;
+            m_transform.Translate(x, y, 0);
+        }
+       
 	}
 
     void OnTriggerEnter(Collider other)
