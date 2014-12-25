@@ -29,7 +29,7 @@ public class rocket : MonoBehaviour {
 
     void OnTriggerStay(Collider other)
     {
-        if(other.tag.Equals("Reddot_1"))
+        if (other.tag.Equals("Reddot_1") || other.tag.Equals("Reddot_2"))
         {
             Destroy(other.gameObject);
             GameManager.Instance.AddScore(1);

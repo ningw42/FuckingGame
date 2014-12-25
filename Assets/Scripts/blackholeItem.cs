@@ -25,6 +25,7 @@ public class blackholeItem : MonoBehaviour {
             if (player != null)
             {
                 Instantiate(m_blackhole, m_transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
             }
         }
     }

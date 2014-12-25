@@ -22,7 +22,7 @@ public class bombItem : MonoBehaviour {
         if(other.tag.Equals("Player"))
         {
             //create a sphere to destroy enemy entering the collison area
-            Instantiate(m_destroy,m_transform.position, m_transform.rotation);
+            Instantiate(m_destroy, m_transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
