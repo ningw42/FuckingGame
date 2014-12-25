@@ -21,6 +21,7 @@ public class iceItem : MonoBehaviour {
         {
             Destroy(this.gameObject);
             Instantiate(m_Frozen, this.transform.position, Quaternion.identity);
+            GameManager.Instance.m_itemCount--;
         }
     }
 }

@@ -35,6 +35,7 @@ public class rocketItem : MonoBehaviour {
                 rocket clone = Instantiate(m_rocket, m_transform.position, player.transform.rotation) as rocket;
                 acceleration.z = 0;
                 clone.m_direction = acceleration;
+                GameManager.Instance.m_itemCount--;
                 Destroy(this.gameObject);
             }
         }

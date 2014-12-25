@@ -6,11 +6,13 @@ public class Frozen : MonoBehaviour {
     protected ArrayList mylist1;
     protected ArrayList mylist2;
     public float m_livetime = 5;
+    public Transform m_frozenFX;
+    protected Transform froz;
 	// Use this for initialization
 	void Start () {
-
         mylist1 = new ArrayList();
         mylist2 = new ArrayList();
+        froz = Instantiate(m_frozenFX, transform.position, transform.rotation) as Transform;
 	}
 	
 	// Update is called once per frame
@@ -27,6 +29,7 @@ public class Frozen : MonoBehaviour {
             {
                 reddot.isFrozen = false;
             }
+            Destroy(froz.gameObject);
             Destroy(this.gameObject);
         }
 	}

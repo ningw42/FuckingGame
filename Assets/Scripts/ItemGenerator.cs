@@ -18,7 +18,7 @@ public class ItemGenerator : MonoBehaviour {
         if (time_delay <= 0)
         {
             generateItem();
-            Destroy(this);
+            Destroy(this.gameObject);
         }
 	}
 

@@ -4,8 +4,9 @@ using System.Collections;
 public class RedDot1 : MonoBehaviour {
 	float x;
 	float y;
-	float speed = 1;
+	float speed = 50;
 	Vector3 direction;
+    Vector3 delta;
 	GameObject master;
     Transform master_transform;
     Transform m_transform;
@@ -25,15 +26,23 @@ public class RedDot1 : MonoBehaviour {
         if(!isFrozen)
         {
             direction = (master_transform.position - m_transform.position).normalized;
-            x = speed * direction.x;
-            y = speed * direction.y;
-            m_transform.Translate(x, y, 0);
+            //x = speed * direction.x;
+            //y = speed * direction.y;
+            delta = direction * speed * Time.deltaTime;
+            delta.z = 0;
+            m_transform.Translate(delta);
         }
        
 	}
 
     void OnTriggerEnter(Collider other)
     {
-
+        GameObject enteredObject = other.gameObject;
+        if (enteredObject.tag.Equals("Player"))
+        {
+            Player player = enteredObject.GetComponent<Player>();
+            player.m_life--;
+            Destroy(this.gameObject);
+        }
     }
 }
