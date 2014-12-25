@@ -15,7 +15,6 @@ public class BoundHandle : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.tag);
         if (!other.gameObject.tag.Equals("Player") && !other.gameObject.tag.Equals("Bound"))
         {
             Destroy(other.gameObject);

@@ -2,12 +2,12 @@
 using System.Collections;
 
 public class blackholeItem : MonoBehaviour {
-    public Transform m_blackhole;
+    public blackHole m_blackhole;
     protected Transform m_transform;
 
 	// Use this for initialization
 	void Start () {
-        m_blackhole = this.transform;
+        m_transform = this.transform;
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class blackholeItem : MonoBehaviour {
             Player player = other.GetComponent<Player>();
             if (player != null)
             {
-
+                Instantiate(m_blackhole, m_transform.position, Quaternion.identity);
             }
         }
     }
