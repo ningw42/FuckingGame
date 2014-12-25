@@ -18,8 +18,6 @@ public class Frozen : MonoBehaviour {
         m_livetime -= Time.deltaTime;
         if (m_livetime <= 0)
         {
-            
-
             //free the ball being frozen
             foreach(RedDot1 reddot in mylist1)
             {
@@ -29,7 +27,6 @@ public class Frozen : MonoBehaviour {
             {
                 reddot.isFrozen = false;
             }
-
             Destroy(this.gameObject);
         }
 	}
@@ -39,6 +36,7 @@ public class Frozen : MonoBehaviour {
         if(other.tag.Equals("Reddot_1"))
         {
             RedDot1 red1 = other.GetComponent<RedDot1>();
+            Debug.Log(red1);
             if(red1!=null)
             {
                 red1.isFrozen = true;          //froze the ball
