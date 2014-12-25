@@ -16,7 +16,6 @@ public class destroy : MonoBehaviour {
         m_livetime -= Time.deltaTime;
         if (m_livetime <= 0)
         {
-            Debug.Log(exp);
             Destroy(exp.gameObject);
             Destroy(this.gameObject);
         }

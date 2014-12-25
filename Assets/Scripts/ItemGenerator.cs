@@ -24,7 +24,7 @@ public class ItemGenerator : MonoBehaviour {
 
     private void generateItem()
     {
-        int token = Random.Range(0, 3);
+        int token = Random.Range(0, 4);
         Transform target = m_bomb;
         switch (token)
         {

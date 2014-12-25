@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RedDot2Generator : MonoBehaviour {
     public Transform reddot_2;
-    private int timer = 0;
+    public float m_delta = 2;
 
     // Use this for initialization
     void Start()
@@ -19,9 +19,10 @@ public class RedDot2Generator : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (timer++ == 100)
+        m_delta -= Time.deltaTime;
+        if (m_delta <= 0)
         {
-            timer = 0;
+            m_delta = 2;
             Instantiate(reddot_2, this.transform.position, Quaternion.identity);
         }
     }

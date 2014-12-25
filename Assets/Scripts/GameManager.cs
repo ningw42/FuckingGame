@@ -64,10 +64,10 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0;
         }
 
-        while (m_itemCount < 3)
+        if (m_itemCount < 3)
         {
-            Instantiate(itemGen, new Vector3(0, 0, 0) ,Quaternion.identity);
             m_itemCount++;
+            Instantiate(itemGen, new Vector3(0, 0, 0) ,Quaternion.identity);
         }
     }
 
