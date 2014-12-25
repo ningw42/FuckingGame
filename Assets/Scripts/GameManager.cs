@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance;
 
+    public Transform itemGen;
+
     //得分
     public int m_score = 0;
 
@@ -20,6 +22,8 @@ public class GameManager : MonoBehaviour {
     // 声音源
     protected AudioSource m_Audio;
 
+    public int m_itemCount;
+
     void Awake()
     {
         Instance = this;
@@ -30,6 +34,8 @@ public class GameManager : MonoBehaviour {
     {
 
         m_Audio = this.audio;
+
+        m_itemCount = 0;
 
         // 获取主角
         GameObject obj = GameObject.FindGameObjectWithTag("Player");
@@ -56,6 +62,12 @@ public class GameManager : MonoBehaviour {
         if (Time.timeScale > 0 && Input.anyKey)
         {
             Time.timeScale = 0;
+        }
+
+        while (m_itemCount < 3)
+        {
+            Instantiate(itemGen, new Vector3(0, 0, 0) ,Quaternion.identity);
+            m_itemCount++;
         }
     }
 
