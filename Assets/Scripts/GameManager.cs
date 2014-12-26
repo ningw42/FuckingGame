@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
 
         m_Audio = this.audio;
 
-        m_itemCount = 0;
+        m_itemCount = 3;
 
         // 获取主角
         GameObject obj = GameObject.FindGameObjectWithTag("Player");
