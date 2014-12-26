@@ -65,12 +65,10 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0;
         }
 
-        Debug.Log(m_itemCount);
-        //if (m_itemCount < 3)
-        //{
-        //    m_itemCount++;
-        //    Instantiate(itemGen, new Vector3(0, 0, 0) ,Quaternion.identity);
-        //}
+        if (m_player.m_life == 0)
+        {
+
+        }
     }
 
     void OnGUI()
@@ -79,13 +77,13 @@ public class GameManager : MonoBehaviour {
         if (Time.timeScale == 0)
         {
             // 继续游戏按钮
-            if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.4f, 100, 30), "继续游戏"))
+            if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.4f, 100, 30), "Resume"))
             {
                 Time.timeScale = 1;
             }
 
             // 退出游戏按钮
-            if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.6f, 100, 30), "退出游戏"))
+            if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.6f, 100, 30), "Exit"))
             {
                 // 退出游戏
                 Application.Quit();
@@ -106,12 +104,12 @@ public class GameManager : MonoBehaviour {
 
             // 显示游戏失败
             GUI.skin.label.alignment = TextAnchor.LowerCenter;
-            GUI.Label(new Rect(0, Screen.height * 0.2f, Screen.width, 60), "游戏失败");
+            GUI.Label(new Rect(0, Screen.height * 0.2f, Screen.width, 60), "You Died");
 
             GUI.skin.label.fontSize = 20;
 
             // 显示按钮
-            if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.5f, 100, 30), "再试一次"))
+            if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.5f, 100, 30), "Try Again"))
             {
                 // 读取当前关卡
                 Application.LoadLevel(Application.loadedLevelName);
@@ -121,14 +119,14 @@ public class GameManager : MonoBehaviour {
         GUI.skin.label.fontSize = 15;
 
         // 显示主角生命
-        GUI.Label(new Rect(5, 5, 100, 30), "装甲 " + life);
+        GUI.Label(new Rect(5, 5, 100, 30), "Life " + life);
 
         // 显示最高分
         GUI.skin.label.alignment = TextAnchor.LowerCenter;
-        GUI.Label(new Rect(0, 5, Screen.width, 30), "纪录 " + m_hiscore);
+        GUI.Label(new Rect(0, 5, Screen.width, 30), "Record " + m_hiscore);
 
         // 显示当前得分
-        GUI.Label(new Rect(0, 25, Screen.width, 30), "得分 " + m_score);
+        GUI.Label(new Rect(0, 25, Screen.width, 30), "Score " + m_score);
 
     }
 

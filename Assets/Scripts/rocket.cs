@@ -5,7 +5,7 @@ using System;
 public class rocket : MonoBehaviour {
 
     //speed
-    public float m_speed = 100;
+    public float m_speed = 80;
     public float m_rotationX;
     public float m_rotationY;
     public Vector3 m_direction;
@@ -24,7 +24,7 @@ public class rocket : MonoBehaviour {
         //float angle_x = (float)Math.Cos(m_transform.rotation.x);
         //float angle_y = (float)Math.Cos(m_transform.rotation.y);
         //m_transform.Translate(new Vector3(-m_speed * Time.deltaTime * angle_x, -m_speed * Time.deltaTime * angle_y, 0));
-        m_transform.Translate(m_frameLength, Space.World);
+        m_transform.Translate(m_frameLength * Time.deltaTime, Space.World);
 	}
 
     void OnTriggerStay(Collider other)

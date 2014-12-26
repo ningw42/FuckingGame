@@ -41,9 +41,12 @@ public class blackHole : MonoBehaviour {
         {
             if (tag.Equals("Reddot_1") || tag.Equals("Reddot_2") || tag.Equals("Player"))
             {
-                gravity = m_transform.position - inrangeObject.transform.position;
-                gravity = gravity.normalized * 100 / (gravity.magnitude < 5 ? 5 : gravity.magnitude);
-                inrangeObject.transform.Translate(gravity, Space.World);
+                if (Time.deltaTime != 0)
+                {
+                    gravity = m_transform.position - inrangeObject.transform.position;
+                    gravity = gravity.normalized * 100 / (gravity.magnitude < 5 ? 5 : gravity.magnitude);
+                    inrangeObject.transform.Translate(gravity, Space.World);
+                }
             }
         }
 	}

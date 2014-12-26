@@ -34,7 +34,7 @@ public class rocketItem : MonoBehaviour {
 
                 rocket clone = Instantiate(m_rocket, m_transform.position, player.transform.rotation) as rocket;
                 acceleration.z = 0;
-                clone.m_direction = acceleration;
+                clone.m_direction = acceleration.normalized;
 
                 //GameManager.Instance.m_itemCount--;
                 GameManager.Instance.AddItem();
