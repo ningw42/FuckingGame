@@ -36,7 +36,8 @@ public class rocketItem : MonoBehaviour {
                 acceleration.z = 0;
                 clone.m_direction = acceleration;
 
-                GameManager.Instance.m_itemCount--;
+                //GameManager.Instance.m_itemCount--;
+                GameManager.Instance.AddItem();
                 Destroy(this.gameObject);
             }
         }

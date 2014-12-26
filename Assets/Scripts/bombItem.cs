@@ -23,7 +23,8 @@ public class bombItem : MonoBehaviour {
         {
             //create a sphere to destroy enemy entering the collison area
             Instantiate(m_destroy, m_transform.position, Quaternion.identity);
-            GameManager.Instance.m_itemCount--;
+            //GameManager.Instance.m_itemCount--;
+            GameManager.Instance.AddItem();
             Destroy(this.gameObject);
         }
     }

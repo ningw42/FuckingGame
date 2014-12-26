@@ -20,7 +20,8 @@ public class iceItem : MonoBehaviour {
         if(other.tag.Equals("Player"))
         {
             Instantiate(m_Frozen, this.transform.position, Quaternion.identity);
-            GameManager.Instance.m_itemCount--;
+            //GameManager.Instance.m_itemCount--;
+            GameManager.Instance.AddItem();
             Destroy(this.gameObject);
         }
     }
