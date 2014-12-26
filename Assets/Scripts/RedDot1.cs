@@ -26,13 +26,10 @@ public class RedDot1 : MonoBehaviour {
         if(!isFrozen)
         {
             direction = (master_transform.position - m_transform.position).normalized;
-            //x = speed * direction.x;
-            //y = speed * direction.y;
             delta = direction * speed * Time.deltaTime;
             delta.z = 0;
             m_transform.Translate(delta);
         }
-       
 	}
 
     void OnTriggerEnter(Collider other)

@@ -3,23 +3,25 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
+    // Itself
     public static GameManager Instance;
 
+    // ItemGenerator
     public Transform itemGen;
 
-    //得分
+    // Score
     public int m_score = 0;
 
-    //纪录
+    // Record
     public static int m_hiscore = 0;
 
-    //主角
+    // Player
     protected Player m_player;
 
-    // 背景音乐
+    // BGM Clip
     public AudioClip m_musicClip;
 
-    // 声音源
+    // Audio Source
     protected AudioSource m_Audio;
 
     public int m_itemCount;
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour {
 
         AddItem(); AddItem(); AddItem();
 
-        // 获取主角
+        // find Player
         GameObject obj = GameObject.FindGameObjectWithTag("Player");
         if (obj != null)
         {
@@ -53,15 +55,14 @@ public class GameManager : MonoBehaviour {
     void Update()
     {
 
-        // 循环播放背景音乐
+        // BGM
         if (!m_Audio.isPlaying)
         {
             m_Audio.clip = m_musicClip;
             m_Audio.Play();
-
         }
 
-        // 暂停游戏
+        // Pause
         if (Time.timeScale > 0 && Input.touchCount > 0 && Input.GetTouch(0).tapCount == 2)
         {
             Time.timeScale = 0;
@@ -77,46 +78,39 @@ public class GameManager : MonoBehaviour {
 
     void OnGUI()
     {
-        // 游戏暂停
+        // Pause
         if (pause)
         {
-            // 继续游戏按钮
+            // Continue button
             if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.5f, 100, 30), "Resume"))
             {
                 Time.timeScale = 1;
                 pause = false;
             }
-
-            //// 退出游戏按钮
-            //if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.6f, 100, 30), "Exit"))
-            //{
-            //    // 退出游戏
-            //    Application.Quit();
-            //}
         }
 
         int life = 0;
         if (m_player != null)
         {
-            // 获得主角的生命值
+            // Player life
             life = (int)m_player.m_life;
         }
-        else // game over
+        else // Game over
         {
 
-            // 放大字体
+            // Font
             GUI.skin.label.fontSize = 50;
 
-            // 显示游戏失败
+            // Game over
             GUI.skin.label.alignment = TextAnchor.LowerCenter;
             GUI.Label(new Rect(0, Screen.height * 0.2f, Screen.width, 60), "You Died");
 
             GUI.skin.label.fontSize = 20;
 
-            // 显示按钮
+            // Again button
             if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.5f, 100, 30), "Try Again"))
             {
-                // 读取当前关卡
+                // Reload
                 Application.LoadLevel ("OnGame");
                 Time.timeScale = 1;
             }
@@ -124,30 +118,31 @@ public class GameManager : MonoBehaviour {
 
         GUI.skin.label.fontSize = 15;
 
-        // 显示主角生命
+        // Player lifeCount
         GUI.Label(new Rect(5, 5, 100, 30), "Life " + life);
 
-        // 显示最高分
+        // Record
         GUI.skin.label.alignment = TextAnchor.LowerCenter;
         GUI.Label(new Rect(0, 5, Screen.width, 30), "Record " + m_hiscore);
 
-        // 显示当前得分
+        // Score
         GUI.Label(new Rect(0, 25, Screen.width, 30), "Score " + m_score);
 
     }
 
-    // 增加分数
+    // Score change
     public void AddScore(int point)
     {
         m_score += point;
 
-        // 更新高分纪录
+        // Update record
         if (m_hiscore < m_score)
             m_hiscore = m_score;
     }
 
     public void AddItem()
     {
+        // New ItemGenerator
         Instantiate(itemGen, new Vector3(0, 0, 0), Quaternion.identity);
         m_itemCount++;
     }
