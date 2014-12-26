@@ -28,7 +28,10 @@ public class RedDot2 : MonoBehaviour {
         if (enteredObject.tag.Equals("Player"))
         {
             Player player = enteredObject.GetComponent<Player>();
-            player.m_life--;
+            if (player != null)
+            {
+                player.m_life--;
+            }
             Destroy(this.gameObject);
         }
     }

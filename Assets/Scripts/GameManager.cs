@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour {
 
     public int m_itemCount;
 
+    public bool pause = false;
+
     void Awake()
     {
         Instance = this;
@@ -60,34 +62,37 @@ public class GameManager : MonoBehaviour {
         }
 
         // 暂停游戏
-        if (Time.timeScale > 0 && Input.anyKey)
+        if (Time.timeScale > 0 && Input.touchCount > 0 && Input.GetTouch(0).tapCount == 2)
         {
             Time.timeScale = 0;
+            pause = true;
         }
 
-        if (m_player.m_life == 0)
+        if (m_player != null && m_player.m_life == 0)
         {
-
+            Destroy(m_player.gameObject);
+            Time.timeScale = 0;
         }
     }
 
     void OnGUI()
     {
         // 游戏暂停
-        if (Time.timeScale == 0)
+        if (pause)
         {
             // 继续游戏按钮
-            if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.4f, 100, 30), "Resume"))
+            if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.5f, 100, 30), "Resume"))
             {
                 Time.timeScale = 1;
+                pause = false;
             }
 
-            // 退出游戏按钮
-            if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.6f, 100, 30), "Exit"))
-            {
-                // 退出游戏
-                Application.Quit();
-            }
+            //// 退出游戏按钮
+            //if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.6f, 100, 30), "Exit"))
+            //{
+            //    // 退出游戏
+            //    Application.Quit();
+            //}
         }
 
         int life = 0;
@@ -112,7 +117,8 @@ public class GameManager : MonoBehaviour {
             if (GUI.Button(new Rect(Screen.width * 0.5f - 50, Screen.height * 0.5f, 100, 30), "Try Again"))
             {
                 // 读取当前关卡
-                Application.LoadLevel(Application.loadedLevelName);
+                Application.LoadLevel ("OnGame");
+                Time.timeScale = 1;
             }
         }
 
