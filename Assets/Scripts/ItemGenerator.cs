@@ -39,8 +39,8 @@ public class ItemGenerator : MonoBehaviour {
 
     private Vector3 generatePos()
     {
-        int width = Screen.width - 20;
-        int height = Screen.height - 20;
+        int width = Screen.width - 50;
+        int height = Screen.height - 50;
         int x = Random.Range(- width / 2 , width / 2);
         int y = Random.Range(-height / 2, height / 2);
         return new Vector3(x, y, 100);
