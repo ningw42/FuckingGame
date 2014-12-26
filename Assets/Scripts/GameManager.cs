@@ -37,13 +37,14 @@ public class GameManager : MonoBehaviour {
 
         m_itemCount = 0;
 
+        AddItem(); AddItem(); AddItem();
+
         // 获取主角
         GameObject obj = GameObject.FindGameObjectWithTag("Player");
         if (obj != null)
         {
             m_player = obj.GetComponent<Player>();
         }
-
     }
 
     // Update is called once per frame
@@ -64,11 +65,12 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0;
         }
 
-        if (m_itemCount < 3)
-        {
-            m_itemCount++;
-            Instantiate(itemGen, new Vector3(0, 0, 0) ,Quaternion.identity);
-        }
+        Debug.Log(m_itemCount);
+        //if (m_itemCount < 3)
+        //{
+        //    m_itemCount++;
+        //    Instantiate(itemGen, new Vector3(0, 0, 0) ,Quaternion.identity);
+        //}
     }
 
     void OnGUI()
@@ -138,5 +140,11 @@ public class GameManager : MonoBehaviour {
         // 更新高分纪录
         if (m_hiscore < m_score)
             m_hiscore = m_score;
+    }
+
+    public void AddItem()
+    {
+        Instantiate(itemGen, new Vector3(0, 0, 0), Quaternion.identity);
+        m_itemCount++;
     }
 }
