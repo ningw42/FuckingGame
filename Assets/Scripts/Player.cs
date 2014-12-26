@@ -23,12 +23,6 @@ public class Player : MonoBehaviour {
         axis = new Vector3(0, 0, -1);
         direction = new Vector3(0, -1, 0);
 	}
-
-	void OnGUI (){
-        //GUI.Label (new Rect (10, 10, 100, 300), "x=" + x + " ,y=" + y);
-        //GUI.Label (new Rect (10, 50, 100, 100), xedge + ", " + yedge);
-        //GUI.Label(new Rect(10, 100, 100, 100), m_transform.position.x + " ," + m_transform.position.y);
-	}
 	
 	// Update is called once per frame
 	void Update () {
