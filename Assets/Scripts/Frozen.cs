@@ -39,7 +39,6 @@ public class Frozen : MonoBehaviour {
         if(other.tag.Equals("Reddot_1"))
         {
             RedDot1 red1 = other.GetComponent<RedDot1>();
-            Debug.Log(red1);
             if(red1!=null)
             {
                 red1.isFrozen = true;          //froze the ball
